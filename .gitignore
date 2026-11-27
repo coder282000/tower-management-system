@@ -1,7 +1,28 @@
-logs/
+# Python
 __pycache__/
 *.pyc
-.venv/
-config/_*tmp.json
-*.bak_*
+*.pyo
+
+# Backup and save files
+*.bak*
+*.save
+nodes/*.bak*
+
+# Runtime logs and terminal output
+logs/
 *_output.txt
+election_output.txt
+week*_output.txt
+.experiment.lock
+
+# One-off migration scripts
+apply_*.py
+fix_history_logging.py
+
+# Spark analysis output
+analysis/
+analysis_out/
+
+# Temp
+*.tmp
+results/week10_backup/

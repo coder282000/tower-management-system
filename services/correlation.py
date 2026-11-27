@@ -20,13 +20,29 @@ class CorrelationService:
         if fault and not open_incident:
             incident = {"site": site, "cause": "grid" if not data.get("grid", True) else "link",
                         "opened": time.time(), "battery": data.get("battery")}
+            if data.get("fid"):
+                incident["fid"] = data["fid"]       # fault id, only present when the run traces faults (Milestone 8)
             node.incidents[site] = incident
             node.lc += 1        # local event ticks the clock
-            node.log.event("correlated_incident", site=site, cause=incident["cause"], lc=node.lc)
+            node.log.event("correlated_incident", site=site, cause=incident["cause"], fid=incident.get("fid"), lc=node.lc)
             return ("OPEN", incident)
         if not fault and open_incident:
             del node.incidents[site]
             node.log.event("incident_resolved", site=site,
                            duration=time.time() - open_incident["opened"])
+            return ("RESOLVED", {"site": site})
+        return (None, None)
+
+    def stateless(self, site, data, is_open):
+        """Milestone 8 processor-pool model: the pool manager keeps no state. The core owns the incident table and
+        tells the manager whether this site's incident is already open."""
+        fault = (not data.get("grid", True)) or (not data.get("link", True))
+        if fault and not is_open:
+            inc = {"site": site, "cause": "grid" if not data.get("grid", True) else "link",
+                   "opened": time.time(), "battery": data.get("battery")}
+            if data.get("fid"):
+                inc["fid"] = data["fid"]
+            return ("OPEN", inc)
+        if not fault and is_open:
             return ("RESOLVED", {"site": site})
         return (None, None)

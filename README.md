@@ -60,3 +60,41 @@ Run
     python3 -m experiments.week5_transactions            # full, writes results/week5_*.csv
     python3 -m experiments.week6_deadlock --demo         # ~1 min narrated
     python3 -m experiments.week6_deadlock                # full, writes results/week6_*.csv
+
+---
+# Milestones 7 and 8 (added)
+
+New / changed files
+    services/faulttolerance.py          M7  failure detection, backup-manager failover, replication, outbox, soft state,
+                                            site-down detection, fault injection (crash, omission, service, Byzantine)
+    experiments/week7_faulttolerance.py M7  7 fault scenarios x baseline/proposed, availability, MTTR, coverage, sweep
+    experiments/week8_models.py         M8  5 system models + 2 controls: latency, throughput, utilisation, scalability,
+                                            reliability, cost, stress, decision matrix with sensitivity analysis
+    experiments/_common.py              run lock (one experiment at a time), environment snapshot, mean/sd/CI
+    docs/RUN_M78.md, docs/run_m78.ps1   step-by-step run guide and PowerShell runner
+Changed by one line: nodes/node.py, metrics/logger.py (optional append-mode logs, so a relaunched node keeps its history).
+
+Run
+    python3 -m experiments.week7_faulttolerance --demo      # ~1.5 min narrated
+    python3 -m experiments.week7_faulttolerance             # ~25 min, results/week7_*.csv
+    python3 -m experiments.week8_models --demo              # ~3 min table
+    python3 -m experiments.week8_models                     # ~50 min, results/week8_*.csv
+
+---
+# Milestones 9 and 10 (added)
+    services/store.py           M9   physical object store: primary-backup replication (sync/async), epochs and fencing, memory/file backends
+    services/naming.py          M9/10 name server (master with journal) and read-only zone servers; promotion, migration, rejoin, monitor
+    services/transparency.py    M9/10 transparent client (access, location, replication, migration, failure), 6 resolution schemes, baseline client
+    services/procmgmt.py        M10  workflows: Create -> Locate -> Schedule -> Coordinate -> Terminate, durable state, leader as coordinator
+    experiments/_lab.py         shared test bench;  week9_transparency.py, week10_naming_procs.py
+    docs/RUN_M910.md, run_m910.ps1, weekly_log_M910.md
+Run:  python3 -m experiments.week9_transparency --demo      python3 -m experiments.week10_naming_procs --demo
+
+---
+# HDFS + Spark integration (added with Milestones 9 and 10)
+    scripts/hdfs_up.sh, hdfs_down.sh      start HDFS and wait until 3 DataNodes are live / stop it before timing runs
+    scripts/archive_to_hdfs.sh            results -> /tower/<weekN>/ and /tower/archive/<stamp>/, then fsck
+    analysis/spark_analysis.py            Spark (reads HDFS) or pandas: mean/sd per group for every result file, plus the metric that
+                                          discriminates each Week 7 scenario
+    experiments/hdfs_probe.py             reads during a DataNode loss: native client vs WebHDFS (run alone)
+    docs/HDFS_SPARK.md                    how it fits Milestones 9 and 10, what you can claim, limits

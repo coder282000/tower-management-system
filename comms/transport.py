@@ -4,9 +4,12 @@ The Link adds delay, jitter and loss to every emulated send, so network
 conditions are reproducible on any OS. Control-plane calls pass emulate=False.
 """
 import asyncio
+import socket
 import random
 
 from .message import Message
+
+LINE_LIMIT = 16 * 1024 * 1024        # one message = one line; bulk name registration (Milestone 10) needs more than asyncio's 64 KB default
 
 
 class Link:
@@ -33,7 +36,12 @@ class Transport:
         self.server = None
 
     async def start(self):
-        self.server = await asyncio.start_server(self._conn, self.host, self.port)
+        _sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        _sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        _sock.bind((self.host, self.port))
+        _sock.listen(socket.SOMAXCONN)
+        _sock.setblocking(False)
+        self.server = await asyncio.start_server(self._conn, sock=_sock, limit=LINE_LIMIT)
 
     async def _conn(self, reader, writer):
         try:
@@ -56,7 +64,7 @@ class Transport:
                 return None
             await asyncio.sleep(delay)
         try:
-            reader, writer = await asyncio.wait_for(asyncio.open_connection(host, port), timeout)
+            reader, writer = await asyncio.wait_for(asyncio.open_connection(host, port, limit=LINE_LIMIT), timeout)
             writer.write(msg.encode())
             await writer.drain()
             reply = None

@@ -1,0 +1,56 @@
+scenario,model,score,rank
+equal weights @ 9 sites,workstation,0.789,1
+equal weights @ 9 sites,integrated,0.698,2
+equal weights @ 9 sites,host_based,0.642,3
+equal weights @ 9 sites,server_based,0.507,4
+equal weights @ 9 sites,processor_pool,0.219,5
+"telecom (reliability, latency first) @ 9 sites",integrated,0.72,1
+"telecom (reliability, latency first) @ 9 sites",workstation,0.696,2
+"telecom (reliability, latency first) @ 9 sites",host_based,0.613,3
+"telecom (reliability, latency first) @ 9 sites",server_based,0.304,4
+"telecom (reliability, latency first) @ 9 sites",processor_pool,0.282,5
+cost-driven @ 9 sites,host_based,0.762,1
+cost-driven @ 9 sites,workstation,0.687,2
+cost-driven @ 9 sites,server_based,0.554,3
+cost-driven @ 9 sites,integrated,0.461,4
+cost-driven @ 9 sites,processor_pool,0.312,5
+performance-driven @ 9 sites,workstation,0.891,1
+performance-driven @ 9 sites,integrated,0.737,2
+performance-driven @ 9 sites,host_based,0.735,3
+performance-driven @ 9 sites,server_based,0.507,4
+performance-driven @ 9 sites,processor_pool,0.202,5
+cheap workstations (equal weights) @ 9 sites,workstation,0.876,1
+cheap workstations (equal weights) @ 9 sites,integrated,0.702,2
+cheap workstations (equal weights) @ 9 sites,host_based,0.642,3
+cheap workstations (equal weights) @ 9 sites,server_based,0.444,4
+cheap workstations (equal weights) @ 9 sites,processor_pool,0.133,5
+expensive workstations (equal weights) @ 9 sites,workstation,0.745,1
+expensive workstations (equal weights) @ 9 sites,integrated,0.698,2
+expensive workstations (equal weights) @ 9 sites,host_based,0.642,3
+expensive workstations (equal weights) @ 9 sites,server_based,0.541,4
+expensive workstations (equal weights) @ 9 sites,processor_pool,0.265,5
+expensive managers (equal weights) @ 9 sites,workstation,0.816,1
+expensive managers (equal weights) @ 9 sites,integrated,0.698,2
+expensive managers (equal weights) @ 9 sites,host_based,0.642,3
+expensive managers (equal weights) @ 9 sites,server_based,0.474,4
+expensive managers (equal weights) @ 9 sites,processor_pool,0.193,5
+expensive bandwidth (equal weights) @ 9 sites,workstation,0.806,1
+expensive bandwidth (equal weights) @ 9 sites,integrated,0.698,2
+expensive bandwidth (equal weights) @ 9 sites,host_based,0.642,3
+expensive bandwidth (equal weights) @ 9 sites,server_based,0.497,4
+expensive bandwidth (equal weights) @ 9 sites,processor_pool,0.179,5
+expensive core (equal weights) @ 9 sites,workstation,0.789,1
+expensive core (equal weights) @ 9 sites,integrated,0.698,2
+expensive core (equal weights) @ 9 sites,host_based,0.642,3
+expensive core (equal weights) @ 9 sites,server_based,0.507,4
+expensive core (equal weights) @ 9 sites,processor_pool,0.219,5
+equal weights @ 3 sites,workstation,0.838,1
+equal weights @ 3 sites,integrated,0.645,2
+equal weights @ 3 sites,host_based,0.605,3
+equal weights @ 3 sites,server_based,0.475,4
+equal weights @ 3 sites,processor_pool,0.099,5
+equal weights @ 6 sites,workstation,0.81,1
+equal weights @ 6 sites,host_based,0.64,2
+equal weights @ 6 sites,integrated,0.639,3
+equal weights @ 6 sites,server_based,0.507,4
+equal weights @ 6 sites,processor_pool,0.129,5

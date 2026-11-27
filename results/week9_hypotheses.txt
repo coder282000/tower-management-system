@@ -1,0 +1,7 @@
+H9.1 read latency direct/warm/cold (ms): mem 9.4/9.3/19.7 (msgs 2.0->4.0); file 9.7/9.3/18.2 (msgs 2.0->4.0); local copy 0.03 ms; identical results everywhere: True: SUPPORTED
+H9.2 write ms rf1 9.1, rf3 sync 21.0 (x2.30), rf3 async 9.8 (x1.08); stale reads from any copy: sync 0.00, async 0.61; busiest copy serves 0.38 of read-any (ideal 0.33): SUPPORTED
+H9.3 transparent: errors 0.0, max latency 65 ms, lost writes 0.0, freeze 16.1 ms; errors after the move: static map 250, hard-coded node 250: SUPPORTED
+H9.4 primary killed: errors direct 506, rf2 sync 0.0; client-visible gap direct 6.35 s vs rf2 0.05 s; worst latency rf2 68 ms; acknowledged writes lost: sync 0.0, async 0.0, direct_mem 192.3: SUPPORTED
+H9.5 availability measured (model = unavailable only while every copy is down, minus the client's 1 s retry window): single/direct 0.699 (model 0.693); single/rf1 0.766 (model 0.776); single/rf2 1.000 (model 1.000); single/rf3 1.000 (model 1.000); double/direct 0.557 (model 0.553); double/rf1 0.606 (model 0.616); double/rf2 0.674 (model 0.679); double/rf3 1.000 (model 1.000); data lost in the double failure: {'rf1': 1, 'rf2': 1, 'rf3': 0}: SUPPORTED
+H9.6 outage seen by the application (s) / worst operation (ms): kill with monitor 0.05/77, kill suspicion only 0.05/69; hang with monitor 0.85/957, hang suspicion only 0.84/950: NOT SUPPORTED
+H9.7 a resumed, replaced primary acknowledged 0 of 3 writes from a stale client; the write survived on the new primary in 3 of 3: SUPPORTED

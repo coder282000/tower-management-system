@@ -1,0 +1,5 @@
+H8.1 host_based: hardware cost 14.0 (lowest of [14.0, 20.0]...), core data-plane in 28.8 msgs/s (highest: host_based), share detected when the core is killed 0.0: SUPPORTED
+H8.2 fault-management msgs/s into the core {'server_based': 3.9, 'workstation': 4.0, 'integrated': 4.0, 'host_based': 28.8, 'processor_pool': 28.8}: two lowest = ['server_based', 'workstation']: NOT SUPPORTED
+H8.3 share detected after mgr1 crash: server_based 0.55, processor_pool 1.00, integrated 1.00: SUPPORTED
+H8.4 core data-plane load growth 3->9 sites: host_based x3.0, server_based x4.1, workstation x4.4, processor_pool x3.0, integrated x4.5: NOT SUPPORTED
+H8.5 share detected after mgr1 crash: integrated 1.00, integrated without FT 0.60, server_based 0.55, server_based + FT 0.95: FT is the cause: SUPPORTED

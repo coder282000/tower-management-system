@@ -1,0 +1,13 @@
+trial,scheme,client,names_on_core_pct,success_during_outage_pct,mean_ms_during,records_before,records_after_restart
+0,static,warm,15.0,100.0,0.0,60,60
+0,static,cold,15.0,100.0,0.0,60,60
+0,broadcast,warm,15.0,86.5,14.3,60,60
+0,broadcast,cold,15.0,86.5,12.02,60,60
+0,nameserver,warm,15.0,0.0,6.82,60,60
+0,nameserver,cold,15.0,0.0,7.15,60,60
+0,nameserver+cache,warm,15.0,100.0,0.01,60,60
+0,nameserver+cache,cold,15.0,58.9,2.87,60,60
+0,prefix,warm,15.0,100.0,9.18,60,60
+0,prefix,cold,15.0,100.0,8.52,60,60
+0,prefix+cache,warm,15.0,100.0,0.01,60,60
+0,prefix+cache,cold,15.0,100.0,1.15,60,60
